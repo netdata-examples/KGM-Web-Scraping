@@ -58,7 +58,7 @@ namespace KGMConsole
             HtmlAgilityPack.HtmlDocument veri = new HtmlAgilityPack.HtmlDocument();
             veri.LoadHtml(siteHtml);
 
-           // ClearNetdataTable("b202f561"); //Arşivleneceği için kullanılmayacak.(denemelerı silmek için kullanıldı)
+           // ClearNetdataTable("apıkey"); //Arşivleneceği için kullanılmayacak.(denemelerı silmek için kullanıldı)
 
             #region Veri çekimi
             foreach (HtmlNode hn in veri.DocumentNode.SelectNodes("//*[@id='ctl00_ctl56_g_c57603e9_909f_4479_8fd2_b894df7c2a32']/table/tr"))
@@ -149,7 +149,7 @@ namespace KGMConsole
 <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">
  <soap:Body>
 <InsertRecord xmlns=""http://tempuri.org/"">
-      <APIKey>b202f561</APIKey>
+      <APIKey>apıkey</APIKey>
       <InsertList>
         <AccPoKeyValuePair>
           <Key>dc_Tarih</Key>
@@ -229,7 +229,7 @@ namespace KGMConsole
             HtmlAgilityPack.HtmlDocument veri2 = new HtmlAgilityPack.HtmlDocument();
             veri2.LoadHtml(siteHtml);
 
-            ClearNetdataTable("458a41d8");// netdata.com'daki verilerin silinmesi için ( apıkey kendı apısıne aıt )
+            ClearNetdataTable("apıkey");// netdata.com'daki verilerin silinmesi için ( apıkey kendı apısıne aıt )
 
             #region Veri Çekimi
             //Burdaki for Html taglerindekileri sıra sıra alması ıcın 500 tane olmasının sebebı ıse verılerın 100'ü asmayacak sekılde olması gerektıgınde daha fazlasına ayarlanabılır
@@ -453,7 +453,7 @@ namespace KGMConsole
 <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">
   <soap:Body>
     <InsertRecord xmlns=""http://tempuri.org/"">
-      <APIKey>458a41d8</APIKey>
+      <APIKey>apıkey</APIKey>
       <InsertList>
         <AccPoKeyValuePair>
           <Key>dc_Sira_No</Key>
@@ -570,7 +570,7 @@ namespace KGMConsole
             HtmlAgilityPack.HtmlDocument veri3 = new HtmlAgilityPack.HtmlDocument();
             veri3.LoadHtml(siteHtml);
 
-            ClearNetdataTable("f5fcaacb");// netdata.com'daki verilerin silinmesi için ( apı key kendı apısıne aıt )
+            ClearNetdataTable("apıkey");// netdata.com'daki verilerin silinmesi için ( apı key kendı apısıne aıt )
 
             #region Link Verisi Çekimi
             for (int i = 1; i < 30; i++)//Burdaki for Html taglerindekileri sıra sıra alması ıcın 30 tane olmasının sebebı ıse verılerın 30'u asmayacak sekılde olması.(18 Bölge mudurlugu var)
@@ -736,7 +736,7 @@ namespace KGMConsole
                 <soap:Envelope xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/"">
   <soap:Body>
     <InsertRecord xmlns=""http://tempuri.org/"">
-      <APIKey>f5fcaacb</APIKey>
+      <APIKey>apıkey</APIKey>
       <InsertList>
         <AccPoKeyValuePair>
           <Key>dc_Bolge_Mudurlugu</Key>
@@ -932,20 +932,20 @@ namespace KGMConsole
         private static void MailGonder()
         {
             //Maılın gönderıldıgı yer
-            //Gönderen:imdbtoplist@gmail.com (şifre 28552855) , Gönderılen:admin@netdata.com ,Kullanılan Host:smtp.gmail.com (port:587)
-            //gonderılen maıl programda hata vermemesı ıcın bu maıl adresı kullanılmıstır.
+            //Kullanılan Host:smtp.gmail.com (port:587)
+            
             SmtpClient sc = new SmtpClient();
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
             sc.EnableSsl = true;
 
-            sc.Credentials = new NetworkCredential("imdbtoplist@gmail.com", "28552855");
+            sc.Credentials = new NetworkCredential("mail adresi", "şifre");
 
             MailMessage mail = new MailMessage();
 
-            mail.From = new MailAddress("imdbtoplist@gmail.com", "İbrahim Şahan");
+            mail.From = new MailAddress("mail adresi", "gönderen ismi");
 
-            mail.To.Add("admin@netdata.com");
+            mail.To.Add("gönderilen mail adresi");
 
             mail.Subject = "Netdata - KGM";
             mail.IsBodyHtml = true;
